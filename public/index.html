@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoic3ByaW5nZGFuaWVsIiwiYSI6Imx4b2l5akkifQ.CSz_-01WtCVmpsFw1CokQw';
+
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+    //style: 'mapbox://styles/mapbox/satellite-hybrid-v8', //stylesheet location
+    style: 'mapbox://styles/mapbox/light-v8', //stylesheet location
+    center: [13.4353665,52.4689729],
+    zoom: 12 // starting zoom
+});
+
+map.addControl(new mapboxgl.Navigation());
+map.on('style.load', function () {
+    map.addSource("wardamage1", {
+        "type": "vector",
+        "tiles": ["/layers/1/{z}/{x}/{y}"]
+    });
+    map.addSource("wardamage2", {
+        "type": "vector",
+        "tiles": ["/layers/2/{z}/{x}/{y}"]
+    });
+
+    map.addLayer({
+	"id": "wardamage1",
+        "type": "line",
+        "source": "wardamage1",
+	"source-layer": "geojsonLayer",
+        "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        "paint": {
+            "line-color": "black",
+            "line-width": 1
+        }
+    });
+    map.addLayer({
+	"id": "wardamage2",
+        "type": "line",
+        "source": "wardamage2",
+	"source-layer": "geojsonLayer",
+        "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        "paint": {
+            "line-color": "green",
+            "line-width": 1
+        }
+    });
+});
+</script>
+
+</body>
+</html>

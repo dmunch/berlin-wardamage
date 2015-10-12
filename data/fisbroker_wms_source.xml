@@ -1,0 +1,28 @@
+<GDAL_WMS>
+  <Service name="WMS">
+    <Version>1.1.1</Version>
+    <ServerUrl>http://fbinter.stadt-berlin.de/fb/wms/senstadt/gebschaden</ServerUrl>
+    <SRS>EPSG:3068</SRS>
+    <CRS>CRS:84</CRS>
+    <Layers>0</Layers>
+    <BBoxOrder>xyXY</BBoxOrder>
+  </Service>
+  <DataWindow>
+    <UpperLeftX>15200</UpperLeftX>
+    <UpperLeftY>25000</UpperLeftY>
+    <LowerRightX>28400</LowerRightX>
+    <LowerRightY>15200</LowerRightY>
+    <YOrigin>top</YOrigin>
+    <TileLevel>4</TileLevel>
+    <TileCountX>2</TileCountX>
+    <TileCountY>2</TileCountY>
+  </DataWindow>
+  <Projection>EPSG:3068</Projection>
+  <BlockSizeX>256</BlockSizeX>
+  <BlockSizeY>256</BlockSizeY>
+  <Cache>
+    <Path>./gdalwmscache</Path> 
+    <Depth>2</Depth>  
+    <Extension>.jpg</Extension>
+  </Cache>
+</GDAL_WMS>
